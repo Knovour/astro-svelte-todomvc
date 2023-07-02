@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro'
+import TokenForm from '../components/TokenForm.svelte'
+import ClickupForm from '../components/ClickupForm.svelte'
+---
+
+<Layout title="Welcome to Astro.">
+	<TokenForm client:load />
+	<ClickupForm client:load />
+</Layout>
