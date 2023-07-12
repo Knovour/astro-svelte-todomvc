@@ -1,10 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import TokenForm from '../components/TokenForm.svelte'
-import ClickupForm from '../components/ClickupForm.svelte'
+
+import New from '../components/New.svelte'
+import ToggleAll from '../components/ToggleAll.svelte'
+import Todo from '../components/Todo.svelte'
+import Footer from '../components/Footer.svelte'
+import ItemLeft from '../components/ItemLeft.astro'
+import Count from '../components/Count.svelte'
+import Filter from '../components/Filter.svelte'
+import Clear from '../components/Clear.svelte'
+
+const filters = ['all', 'active', 'completed']
 ---
 
-<Layout title="Welcome to Astro.">
-	<TokenForm client:load />
-	<ClickupForm client:load />
+<Layout title="TodoMVC">
+	<section class="todoapp">
+		<header class="header">
+			<h1>todos</h1>
+			<New client:load />
+		</header>
+
+		<!-- This section should be hidden by default and shown when there are todos -->
+		<section class="main">
+			<ToggleAll client:load />
+			<Todo client:load />
+		</section>
+
+		<!-- This footer should be hidden by default and shown when there are todos -->
+		<Footer client:load>
+			<ItemLeft>
+				<Count client:load />
+			</ItemLeft>
+			<ul class="filters">
+				{
+					filters.map(status => (
+						<li>
+							<Filter {status} client:load />
+						</li>
+					))
+				}
+			</ul>
+			<Clear client:load />
+		</Footer>
+	</section>
 </Layout>

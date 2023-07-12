@@ -1,8 +1,5 @@
 import { writable } from 'svelte/store'
 
-export const token = writable('')
-export const team = writable('')
-export const space = writable('')
-export const folder = writable('')
-export const list = writable('')
-export const taskTmpl = writable('')
+export const tasks = writable(new Map())
+export const completed = writable(new Set())
+export const show = writable('all')
